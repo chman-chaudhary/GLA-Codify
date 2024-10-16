@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import { LanguagesToExtension } from "./types";
 
-const MOUNT_PATH = path.join(process.cwd(), "src", "problems");
+const MOUNT_PATH = path.join(process.cwd(), "problems");
 
 export const getProblem = async (problemSlug, languageId) => {
   languageId = LanguagesToExtension[languageId];
