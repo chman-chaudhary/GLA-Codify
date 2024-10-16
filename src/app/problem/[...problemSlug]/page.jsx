@@ -57,18 +57,13 @@ export default function Page({ params }) {
 
   // Run Code
   const handleRunCode = async (code, languageId, testcasesLength) => {
-    // const response = await axios.post("https://glacodify.vercel.app/api/submission", {
-    //   code,
-    //   languageId,
-    //   problemSlug: problem?.slug,
-    //   testcasesLength,
-    // });
     const response = await submission(
       code,
       languageId,
       problem?.slug,
       testcasesLength
     );
+    console.log("Response", response);
     setResponse(response.result);
     setCompleteProblem(response.problem);
     if (testcasesLength === -1) {

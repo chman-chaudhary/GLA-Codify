@@ -71,7 +71,7 @@ export async function submission(
     const result = await checkBatchStatus(tokens);
     return { result, problem };
   } catch (e) {
-    console.log("Error while creating submission", e);
+    console.log("Error while creating submission", e?.response?.data || e);
     return NextResponse.json({
       success: false,
       message: "ERROR! while submission...",
