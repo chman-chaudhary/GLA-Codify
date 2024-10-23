@@ -70,12 +70,12 @@ export default function Page({ params }) {
       const status = getResultStatus(response.result);
       console.log("status", status);
       if (problem && session?.user?.email) {
-        // await addSubmission(
-        //   session.user.email,s
-        //   problem.id,
-        //   status.status,
-        //   problem.difficulty
-        // );
+        await addSubmission(
+          session.user.email,
+          problem.id,
+          status.status,
+          problem.difficulty
+        );
         setSubmitStatus(status);
         setIsDrawerOpen(true);
       } else {
