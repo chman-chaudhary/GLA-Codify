@@ -64,24 +64,24 @@ export default function Page({ params }) {
       testcasesLength
     );
     console.log("Response", response);
-    // setResponse(response.result);
-    // setCompleteProblem(response.completeProblem);
-    // if (testcasesLength === -1) {
-    //   const status = getResultStatus(response.result);
-    //   console.log("status", status);
-    //   if (problem && session?.user?.email) {
-    //     await addSubmission(
-    //       session.user.email,
-    //       problem.id,
-    //       status.status,
-    //       problem.difficulty
-    //     );
-    //     setSubmitStatus(status);
-    //     setIsDrawerOpen(true);
-    //   } else {
-    //     console.log("Problem or User Email not found.");
-    //   }
-    // }
+    setResponse(response.result);
+    setCompleteProblem(response.completeProblem);
+    if (testcasesLength === -1) {
+      const status = getResultStatus(response.result);
+      console.log("status", status);
+      if (problem && session?.user?.email) {
+        await addSubmission(
+          session.user.email,
+          problem.id,
+          status.status,
+          problem.difficulty
+        );
+        setSubmitStatus(status);
+        setIsDrawerOpen(true);
+      } else {
+        console.log("Problem or User Email not found.");
+      }
+    }
   };
 
   function getResultStatus(results) {
