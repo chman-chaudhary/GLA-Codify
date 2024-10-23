@@ -66,15 +66,6 @@ public class Main {
 
     USER_CODE_HERE
 
-    public static int[] processInput(String input) {
-        String[] parts = input.split(",");
-        int[] nums = new int[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            nums[i] = Integer.parseInt(parts[i].trim());
-        }
-        return nums;
-    }
-
     public static void main(String[] args) {
         // Reading the array elements
         int[] nums = {input_0};
@@ -86,40 +77,13 @@ public class Main {
 }`,
       python: `USER_CODE_HERE
 
-def process_input(input_string):
-    try:
-        nums = [int(num.strip()) for num in input_string.split(',')]
-        return nums
-    except ValueError as e:
-        print(f"Error: {e}")
-        return []
-
-nums = process_input(input_0)
+nums = [input_0]
 
 result = find_max(nums)
 print(result)`,
       javascript: `USER_CODE_HERE;
 
-function processInput(inputString) {
-    try {
-        const inputArray = inputString.split(',').map(num => num.trim());
-
-        const nums = inputArray.map(num => {
-            const parsedNum = Number(num);
-            if (isNaN(parsedNum)) {
-                throw new Error("Invalid input:" + num + " is not a number");
-            }
-            return parsedNum;
-        });
-
-        return nums;
-    } catch (error) {
-        console.error("Error:", error.message);
-        return [];
-    }
-}
-
-const nums = processInput(input_0);;
+const nums = [input_0];
 
 const result = findMax(nums);
 console.log(result);`,

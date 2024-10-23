@@ -11,6 +11,8 @@ export async function submission(
   problemSlug,
   testcasesLength
 ) {
+  console.log(code);
+
   const problem = Problems.filter((problem) => problem.slug === problemSlug)[0];
 
   const completeProblem = { inputs: [], outputs: [] };
