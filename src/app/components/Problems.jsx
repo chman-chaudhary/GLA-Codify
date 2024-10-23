@@ -89,7 +89,7 @@ export const Problems = () => {
               </TableCell>
 
               {/* Title */}
-              <TableCell className="max-w-48 min-w-48 hover:underline">
+              <TableCell className="max-w-48 min-w-48 hover:text-primary">
                 <Link
                   href={
                     session && session.user
@@ -146,7 +146,7 @@ export const Problems = () => {
                   <>
                     <Avatar className="size-5 mr-2">
                       <AvatarImage
-                        src={problem.lastSolver.image ?? ""}
+                        src={problem.lastSolver.image}
                         alt="User image"
                       />
                       <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-500">

@@ -65,16 +65,17 @@ export default function Page({ params }) {
     );
     console.log("Response", response);
     setResponse(response.result);
-    setCompleteProblem(response.problem);
+    setCompleteProblem(response.completeProblem);
     if (testcasesLength === -1) {
       const status = getResultStatus(response.result);
+      console.log("status", status);
       if (problem && session?.user?.email) {
-        await addSubmission(
-          session.user.email,
-          problem.id,
-          status.status,
-          problem.difficulty
-        );
+        // await addSubmission(
+        //   session.user.email,s
+        //   problem.id,
+        //   status.status,
+        //   problem.difficulty
+        // );
         setSubmitStatus(status);
         setIsDrawerOpen(true);
       } else {
@@ -123,6 +124,7 @@ export default function Page({ params }) {
           </ResizablePanelGroup>
         </ResizablePanel>
       </ResizablePanelGroup>
+
       {response && completeProblem && submitStatus && (
         <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
           <DrawerContent>
@@ -172,12 +174,20 @@ export default function Page({ params }) {
                         text={response[submitStatus.testCaseIdx].stdout}
                       />
                     )}
-                    {submitStatus.status === Status.RTE && (
-                      <ShowResult
-                        label="Runtime Error"
-                        text={response[submitStatus.testCaseIdx].stderr}
-                      />
-                    )}
+                    {submitStatus.status === Status.RTE &&
+                      (response[submitStatus.testCaseIdx].compile_output ? (
+                        <ShowResult
+                          label="Compilation Error"
+                          text={
+                            response[submitStatus.testCaseIdx].compile_output
+                          }
+                        />
+                      ) : (
+                        <ShowResult
+                          label="Runtime Error"
+                          text={response[submitStatus.testCaseIdx].stderr}
+                        />
+                      ))}
                     <ShowResult
                       label="Expected Output"
                       text={completeProblem.outputs[submitStatus.testCaseIdx]}
@@ -203,7 +213,7 @@ const ShowResult = ({ label, text }) => {
     <div className="max-w-[60%] min-w-[60%] mb-3 space-y-2">
       <Label className="mx-1">{label ?? ""}:</Label>
       <div className="bg-secondary max-h-24 overflow-y-scroll p-2 rounded-md">
-        {text ?? ""}
+        {Array.isArray(text) ? JSON.stringify(text) ?? "" : text ?? ""}
       </div>
     </div>
   );
