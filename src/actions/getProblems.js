@@ -11,6 +11,9 @@ export default async function getProblems(userEmail) {
         submissions: true,
         lastSolver: true,
       },
+      orderBy: {
+        id: "asc",
+      },
     });
 
     // Fetch the current user along with their submissions
