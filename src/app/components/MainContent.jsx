@@ -17,15 +17,17 @@ export const MainContent = () => {
   return (
     <div className="w-full">
       <div className="w-[80%] mx-auto">
-        <div className="flex justify-between">
-          <div className="space-x-2 px-3 py-2 bg-gray-400/20 rounded-md">
-            <Button
-              variant={problems ? "default" : "outline"}
-              onClick={handleClick}
-            >
-              Problems
-            </Button>
-            <span>|</span>
+        <div className="flex justify-between flex-wrap gap-y-2">
+          <div className="px-3 py-2 flex gap-x-2 items-center flex-wrap gap-y-1 bg-gray-400/20 rounded-md">
+            <span>
+              <Button
+                variant={problems ? "default" : "outline"}
+                onClick={handleClick}
+              >
+                Problems
+              </Button>
+              <span className="ml-2">|</span>
+            </span>
             <Button
               variant={leaderboard ? "default" : "outline"}
               onClick={handleClick}
@@ -33,9 +35,11 @@ export const MainContent = () => {
               Leader Board
             </Button>
           </div>
-          <div className="space-x-2 px-3 py-2 bg-gray-400/20 rounded-md">
-            <Button disabled={true}>SORT</Button>
-            <span>|</span>
+          <div className="px-3 py-2 flex gap-x-2 items-center flex-wrap gap-y-1 bg-gray-400/20 rounded-md">
+            <span>
+              <Button disabled={true}>SORT</Button>
+              <span className="ml-2">|</span>
+            </span>
             <Button disabled={true}>FILTER</Button>
           </div>
         </div>
