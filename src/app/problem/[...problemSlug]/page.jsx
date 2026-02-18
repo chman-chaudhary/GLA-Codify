@@ -63,12 +63,10 @@ export default function Page({ params }) {
       problem?.slug,
       testcasesLength
     );
-    console.log("Response", response);
     setResponse(response.result);
     setCompleteProblem(response.completeProblem);
     if (testcasesLength === -1) {
       const status = getResultStatus(response.result);
-      console.log("status", status);
       if (problem && session?.user?.email) {
         await addSubmission(
           session.user.email,

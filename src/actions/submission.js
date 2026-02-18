@@ -11,15 +11,7 @@ export async function submission(
   problemSlug,
   testcasesLength
 ) {
-  console.log(code);
-
-  const problem = Problems.filter((problem) => problem.slug === problemSlug)[0];
-
-  const completeProblem = { inputs: [], outputs: [] };
-  problem.testcases.map(({ inputs, output }) => {
-    completeProblem.inputs.push(inputs);
-    completeProblem.outputs.push(output);
-  });
+  const problem = Problems[problemSlug];
 
   if (!problem) {
     return {
@@ -27,6 +19,12 @@ export async function submission(
       message: "Problem not found!...",
     };
   }
+
+  const completeProblem = { inputs: [], outputs: [] };
+  problem.testcases.map(({ inputs, output }) => {
+    completeProblem.inputs.push(inputs);
+    completeProblem.outputs.push(output);
+  });
 
   let boilerCode = problem.fullBoilerCode[languageId];
 

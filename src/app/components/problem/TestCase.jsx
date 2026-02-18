@@ -10,6 +10,7 @@ export const TestCase = ({ response, problemData }) => {
   const [problem, setProblem] = useState();
 
   useEffect(() => {
+    console.log("problemData", problemData);
     setProblem(problemData);
   }, [problem, setProblem]);
 

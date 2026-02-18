@@ -1,136 +1,115 @@
-const Problems = [
-  {
+const Problems = {
+  "two-sum": {
     id: 1,
-    slug: "add-two-numbers",
+    slug: "two-sum",
     fullBoilerCode: {
-      java: `import java.io.*;
-import java.util.*;
-
-public class Main {
-    
-    USER_CODE_HERE
-
-    public static void main(String[] args) {
-        int num1 = Integer.valueOf(input_0);
-        int num2 = Integer.valueOf(input_1);
-        int result = TwoSum(num1, num2);
-        System.out.println(result);
-    }
-}`,
-      python: `USER_CODE_HERE
-
-num1 = int(input_0)
-num2 = int(input_1)
-
-result = TwoSum(num1, num2)
-print(result)`,
-      javascript: `USER_CODE_HERE;
-
-const num1 = parseInt(input_0);
-const num2 = parseInt(input_1);
-
-const result = twoSum(num1, num2);
-console.log(result);`,
-    },
-    testcases: [
-      {
-        inputs: [2, 3],
-        output: 5,
-      },
-      {
-        inputs: [0, 1],
-        output: 1,
-      },
-      {
-        inputs: [500, 1000],
-        output: 1500,
-      },
-      {
-        inputs: [0, 0],
-        output: 0,
-      },
-      {
-        inputs: [95, 5],
-        output: 100,
-      },
-    ],
-  },
-  {
-    id: 2,
-    slug: "max-element-array",
-    fullBoilerCode: {
-      java: `import java.io.*;
-import java.util.*;
+      java: `import java.util.*;
 
 public class Main {
 
     USER_CODE_HERE
 
     public static void main(String[] args) {
-        // Reading the array elements
         int[] nums = {input_0};
 
-        // Calling the function and printing the result
-        int result = findMax(nums);
-        System.out.println(result);
+        int target = Integer.valueOf(input_1);
+
+        int[] result = twoSum(nums, target);
+        System.out.println(result[0] + " " + result[1]);
     }
-}`,
+}
+`,
+
       python: `USER_CODE_HERE
 
 nums = [input_0]
+target = int(input_1)
 
-result = find_max(nums)
-print(result)`,
-      javascript: `USER_CODE_HERE;
+result = twoSum(nums, target)
+print(result[0], result[1])
+`,
+
+      javascript: `USER_CODE_HERE
 
 const nums = [input_0];
+const target = parseInt(input_1);
 
-const result = findMax(nums);
-console.log(result);`,
+const result = twoSum(nums, target);
+console.log(result[0], result[1]);
+`,
     },
+
     testcases: [
       {
-        inputs: ["5, 1, 8, 4, 2"],
-        output: "8",
+        inputs: ["2, 7, 11, 15", 9],
+        output: "0 1",
       },
       {
-        inputs: ["-5, -10, -3, -7, -1"],
-        output: "-1",
+        inputs: ["3, 2, 4", 6],
+        output: "1 2",
       },
       {
-        inputs: ["1, 10"],
-        output: "10",
+        inputs: ["3, 3", 6],
+        output: "0 1",
       },
       {
-        inputs: ["3, 3, 3, 3, 3, 3"],
-        output: "3",
+        inputs: ["1, 5, 7, 3", 8],
+        output: "0 2",
       },
       {
-        inputs: ["-2, -8, 0, 3, 7, -1"],
-        output: "7",
-      },
-      {
-        inputs: ["1000000000, -1000000000, 500, 0, 999999999"],
-        output: "1000000000",
-      },
-      {
-        inputs: ["0, 0, 0, 0"],
-        output: "0",
-      },
-      {
-        inputs: ["1, 2, 3, 4, 5, 6, 7"],
-        output: "7",
-      },
-      {
-        inputs: ["9, 8, 7, 6, 5, 4, 3"],
-        output: "9",
-      },
-      {
-        inputs: ["999999999, 1000000000, 999999998, 999999997, 999999996"],
-        output: "999999999",
+        inputs: ["0, 4, 3, 0", 0],
+        output: "0 3",
       },
     ],
   },
-];
+  "valid-parentheses": {
+    id: 2,
+    slug: "valid-parentheses",
+    fullBoilerCode: {
+      java: `import java.util.*;
+
+public class Main {
+
+    USER_CODE_HERE
+
+    public static void main(String[] args) {
+        String s = "input_0";
+
+        boolean result = isValid(s);
+        System.out.println(result);
+    }
+}
+`,
+
+      python: `USER_CODE_HERE
+
+s = "input_0"
+result = isValid(s)
+print(result)
+`,
+
+      javascript: `USER_CODE_HERE
+
+const s = "input_0";
+
+const result = isValid(s);
+console.log(result);
+`,
+    },
+
+    testcases: [
+      { inputs: ["()[]{}"], output: "true" },
+      { inputs: ["(]"], output: "false" },
+      { inputs: ["([)]"], output: "false" },
+      { inputs: ["{[]}"], output: "true" },
+      { inputs: ["("], output: "false" },
+      { inputs: [")"], output: "false" },
+      { inputs: ["((()))"], output: "true" },
+      { inputs: ["(()"], output: "false" },
+      { inputs: ["())"], output: "false" },
+      { inputs: ["[{()}]"], output: "true" },
+    ],
+  },
+};
 
 export default Problems;
